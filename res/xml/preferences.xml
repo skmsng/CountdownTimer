@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+    <RingtonePreference
+        android:title="@string/label_ringtone"
+        android:key="@string/key_ringtone"
+        android:ringtoneType="alarm"
+        android:showSilent="true"
+        android:showDefault="false"/>
+    <CheckBoxPreference
+        android:title="@string/label_vibrator"
+        android:defaultValue="true"
+        android:key="@string/key_vibrator"/>
+    
+
+</PreferenceScreen>
