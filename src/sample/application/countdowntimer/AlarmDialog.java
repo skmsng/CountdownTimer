@@ -19,30 +19,32 @@ public class AlarmDialog extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		setContentView(R.layout.alarmdialog);
-		vib=(Vibrator)getSystemService(VIBRATOR_SERVICE);
-		findViewById(R.id.button1).setOnClickListener(new OnClickListener(){
-		  public void onClick(View v) {
-		    if(rt!=null)rt.stop();
-		    vib.cancel();
-		    finish();
-		  }
+		this.setContentView(R.layout.alarmdialog);
+		this.vib = (Vibrator)this.getSystemService(VIBRATOR_SERVICE);
+		
+		this.findViewById(R.id.button1).setOnClickListener(new OnClickListener(){
+			public void onClick(View v) {
+				if(rt != null) rt.stop();
+				vib.cancel();
+				finish();
+			}
 		});
-		}
+	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
+		
 		SharedPreferences prefs;
-		prefs=this.getSharedPreferences("CountdownTimerPrefs", 0);
-		String fn=prefs.getString("alarm", "");
-		if(fn!=""){
-		  rt=RingtoneManager.getRingtone(this, Uri.parse(fn));
-		  if(rt!=null&&!rt.isPlaying())rt.play();
+		prefs = this.getSharedPreferences("CountdownTimerPrefs", 0);
+		
+		String fn = prefs.getString("alarm", "");
+		if(fn != ""){
+			rt = RingtoneManager.getRingtone(this, Uri.parse(fn));
+			if(rt!=null && !rt.isPlaying()) rt.play();
 		}
-		if(prefs.getBoolean("vibrator", true))
-		  vib.vibrate(new long[]{0,1000,500,1000,500,1000}, -1);
+		if(prefs.getBoolean("vibrator", true)){
+			vib.vibrate(new long[]{0,1000,500,1000,500,1000}, -1);
 		}
-
-	
+	}
 }

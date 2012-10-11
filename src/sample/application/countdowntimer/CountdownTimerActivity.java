@@ -108,11 +108,11 @@ public class CountdownTimerActivity extends Activity {
 		//ストップが押されたとき
 		btnStop.setOnClickListener(new OnClickListener(){
 			public void onClick(View v) {
-				Intent i = new Intent(mContext,TimerService.class);//インテント生成
-				mContext.stopService(i);
-				btnStop.setEnabled(false);
-				btnStart.setEnabled(true);
-				sb.setEnabled(true);
+				Intent intent = new Intent(mContext,TimerService.class);//インテント生成
+				mContext.stopService(intent);	//サービスの終了
+				btnStop.setEnabled(false);		//ストップボタンを押せない状態にする
+				btnStart.setEnabled(true);		//スタートボタンを押せる状態にする
+				sb.setEnabled(true);			//シークバーを押せる状態にする
 			}
 		});
 		
